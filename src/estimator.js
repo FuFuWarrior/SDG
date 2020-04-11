@@ -116,7 +116,6 @@ function impact(data) {
         dollarInFlight
       };
     }
-
     throw Error('check the spelling of days, months or years');
   } catch (error) {
     throw Error(error);
