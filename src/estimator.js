@@ -275,7 +275,6 @@ const covid19ImpactEstimator = (data) => {
     output.impact = impacted;
     output.severelyImpact = severelyImpacted;
     // return output;
-    console.log(output)
   } catch (error) {
     throw Error(error);
   }
