@@ -261,13 +261,7 @@ const covid19ImpactEstimator = (data) => {
     const severelyImpacted = severelyImpact(data);
     output.impact = impacted;
     output.severelyImpact = severelyImpacted;
-    return new Promise((resolve, reject) => {
-      if (impacted && severelyImpacted) {
-        resolve(output);
-      } else {
-        reject(Error('failed to fetch'));
-      }
-    });
+    return output;
   } catch (error) {
     throw Error(error);
   }

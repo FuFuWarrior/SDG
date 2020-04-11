@@ -10,26 +10,21 @@ app.use(express.json());
 
 app.post('/api/v1/on-covid-19', (req, res) => {
   const data = req.body;
-  estimate(data).then((re) => {
-    res.send(re).status(200);
-  }).catch((err) => {
-    res.send(err).status(404);
-  });
+  const result = estimate(data);
+  res.send(result).status(200);
 });
 
 app.post('/api/v1/on-covid-19/json', (req, res) => {
   const data = req.body;
-  estimate(data).then((re) => {
-    res.send(re).status(200);
-  }).catch((err) => {
-    res.send(err).status(404);
-  });
+  const result = estimate(data);
+  res.send(result).status(200);
 });
 
-app.post('/api/v1/on-covid-19/xml', async (req, res) => {
+
+app.post('/api/v1/on-covid-19/xml', (req, res) => {
   const data = req.body;
   const builder = new xml2js.Builder();
-  const xml = builder.buildObject(await estimate(data));
+  const xml = builder.buildObject(estimate(data));
   res.send(xml).status(200);
 });
 
