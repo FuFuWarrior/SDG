@@ -13,15 +13,15 @@ exports.infectionsByRequestedTime = (data, infected) => {
 
   if (periodType === 'days') {
     factor = Math.floor(period / 3);
-    infections = Math.floor(infected * (2 ** factor));
+    infections = infected * (2 ** factor);
   } else if (periodType === 'weeks') {
     days = period * 7;
     factor = Math.floor(days / 3);
-    infections = Math.floor(infected * (2 ** factor));
+    infections = infected * (2 ** factor);
   } else if (periodType === 'months') {
     days = period * 30;
     factor = Math.floor(days / 3);
-    infections = Math.floor(infected * (2 ** factor));
+    infections = infected * (2 ** factor);
   }
   return infections;
 };
@@ -34,7 +34,7 @@ exports.casesForVentilatorsByRequestedTime = (time) => Math.floor(time * 0.02);
 
 exports.hospitalBedsByRequestedTime = (data, cases) => {
   const bedsAvailable = Math.floor(data.totalHospitalBeds * 0.35);
-  return Math.floor(bedsAvailable - cases);
+  return bedsAvailable - cases;
 };
 
 exports.dollarsInFlight = (data, infections) => {
@@ -51,13 +51,13 @@ exports.dollarsInFlight = (data, infections) => {
 
   if (periodType === 'weeks') {
     timeInDays = timeToElapse * 7;
-    totalDollars = Math.floor((infections * 0.65) * avgDailyIncomeInUSD * timeInDays);
+    totalDollars = Math.floor(infections * 0.65) * avgDailyIncomeInUSD * timeInDays;
   } else if (periodType === 'months') {
     timeInDays = timeToElapse * 30;
-    totalDollars = Math.floor((infections * 0.65) * avgDailyIncomeInUSD * timeInDays);
+    totalDollars = Math.floor(infections * 0.65) * avgDailyIncomeInUSD * timeInDays;
   } else {
     timeInDays = timeToElapse;
-    totalDollars = Math.floor((infections * 0.65) * avgDailyIncomeInUSD * timeInDays);
+    totalDollars = Math.floor(infections * 0.65) * avgDailyIncomeInUSD * timeInDays;
   }
   return Math.floor(totalDollars);
 };

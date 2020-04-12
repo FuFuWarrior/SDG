@@ -1,31 +1,9 @@
-// import {
-//   infectionsByRequestedTime,
-//   severeCasesByRequestedTime,
-//   hospitalBedsByRequestedTime,
-//   casesForICUByRequestedTime,
-//   casesForVentilatorsByRequestedTime,
-//   dollarsInFlight
-// } from '../helpers/utils';
 const { infectionsByRequestedTime } = require('../helpers/utils');
 const { severeCasesByRequestedTime } = require('../helpers/utils');
 const { hospitalBedsByRequestedTime } = require('../helpers/utils');
 const { casesForICUByRequestedTime } = require('../helpers/utils');
 const { casesForVentilatorsByRequestedTime } = require('../helpers/utils');
 const { dollarsInFlight } = require('../helpers/utils');
-
-// const input = {
-//   region: {
-//     name: 'Africa',
-//     avgAge: 19.7,
-//     avgDailyIncomeInUSD: 5,
-//     avgDailyIncomePopulation: 0.71
-//   },
-//   periodType: 'days',
-//   timeToElapse: 58,
-//   reportedCases: 674,
-//   population: 66622705,
-//   totalHospitalBeds: 1380614
-// };
 
 const covid19ImpactEstimator = (data) => {
   const impact = {};
