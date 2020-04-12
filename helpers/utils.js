@@ -53,9 +53,9 @@ exports.dollarsInFlight = (data, infections) => {
   } else if (periodType === 'months') {
     timeInDays = timeToElapse * 30;
     totalDollars = infections * avgDailyIncomePopulation * avgDailyIncomeInUSD * timeInDays;
-  } else {
+  } else if (period === 'days') {
     timeInDays = timeToElapse;
     totalDollars = infections * avgDailyIncomePopulation * avgDailyIncomeInUSD * timeInDays;
   }
-  return totalDollars;
+  return Math.floor(totalDollars);
 };
