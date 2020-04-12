@@ -43,19 +43,19 @@ exports.dollarsInFlight = (data, infections) => {
     timeToElapse
   } = data;
   const {
-    // avgDailyIncomePopulation,
+    avgDailyIncomePopulation,
     avgDailyIncomeInUSD
   } = data.region;
 
   if (periodType === 'weeks') {
     timeInDays = timeToElapse * 7;
-    totalDollars = Math.trunc(infections * 0.65) * avgDailyIncomeInUSD * timeInDays;
+    totalDollars = infections * avgDailyIncomePopulation * avgDailyIncomeInUSD * timeInDays;
   } else if (periodType === 'months') {
     timeInDays = timeToElapse * 30;
-    totalDollars = Math.trunc(infections * 0.65) * avgDailyIncomeInUSD * timeInDays;
+    totalDollars = infections * avgDailyIncomePopulation * avgDailyIncomeInUSD * timeInDays;
   } else {
     timeInDays = timeToElapse;
-    totalDollars = Math.trunc(infections * 0.65) * avgDailyIncomeInUSD * timeInDays;
+    totalDollars = infections * avgDailyIncomePopulation * avgDailyIncomeInUSD * timeInDays;
   }
-  return totalDollars;
+  return Math.floor(totalDollars);
 };
