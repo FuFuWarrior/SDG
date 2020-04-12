@@ -34,7 +34,7 @@ exports.casesForVentilatorsByRequestedTime = (time) => Math.floor(time * 0.02);
 
 exports.hospitalBedsByRequestedTime = (data, cases) => {
   const bedsAvailable = Math.floor(data.totalHospitalBeds * 0.35);
-  return bedsAvailable - cases;
+  return Math.floor(bedsAvailable - cases);
 };
 
 exports.dollarsInFlight = (data, infections) => {
