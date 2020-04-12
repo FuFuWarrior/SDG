@@ -24,11 +24,11 @@ exports.infectionsByRequestedTime = (data, infected) => {
   return infections;
 };
 
-exports.severeCasesByRequestedTime = (time) => Math.trunc(time * 0.15);
+exports.severeCasesByRequestedTime = (time) => Math.trunc(time * (15 / 100));
 
-exports.casesForICUByRequestedTime = (time) => Math.trunc(time * 0.05);
+exports.casesForICUByRequestedTime = (time) => Math.trunc(time * (5 / 100));
 
-exports.casesForVentilatorsByRequestedTime = (time) => Math.trunc(time * 0.02);
+exports.casesForVentilatorsByRequestedTime = (time) => Math.trunc(time * (2 / 100));
 
 exports.hospitalBedsByRequestedTime = (data, cases) => {
   const bedsAvailable = data.totalHospitalBeds * 0.35;
