@@ -12,28 +12,28 @@ exports.infectionsByRequestedTime = (data, infected) => {
   let factor;
 
   if (periodType === 'days') {
-    factor = Math.floor(period / 3);
+    factor = Math.trunc(period / 3);
     infections = infected * (2 ** factor);
   } else if (periodType === 'weeks') {
     days = period * 7;
-    factor = Math.floor(days / 3);
+    factor = Math.trunc(days / 3);
     infections = infected * (2 ** factor);
   } else if (periodType === 'months') {
     days = period * 30;
-    factor = Math.floor(days / 3);
+    factor = Math.trunc(days / 3);
     infections = infected * (2 ** factor);
   }
   return infections;
 };
 
-exports.severeCasesByRequestedTime = (time) => Math.floor(time * 0.15);
+exports.severeCasesByRequestedTime = (time) => Math.trunc(time * 0.15);
 
-exports.casesForICUByRequestedTime = (time) => Math.floor(time * 0.05);
+exports.casesForICUByRequestedTime = (time) => Math.trunc(time * 0.05);
 
-exports.casesForVentilatorsByRequestedTime = (time) => Math.floor(time * 0.02);
+exports.casesForVentilatorsByRequestedTime = (time) => Math.trunc(time * 0.02);
 
 exports.hospitalBedsByRequestedTime = (data, cases) => {
-  const bedsAvailable = Math.floor(data.totalHospitalBeds * 0.35);
+  const bedsAvailable = Math.trunc(data.totalHospitalBeds * 0.35);
   return bedsAvailable - cases;
 };
 
@@ -51,13 +51,13 @@ exports.dollarsInFlight = (data, infections) => {
 
   if (periodType === 'weeks') {
     timeInDays = timeToElapse * 7;
-    totalDollars = Math.floor(infections * 0.65) * avgDailyIncomeInUSD * timeInDays;
+    totalDollars = Math.trunc(infections * 0.65) * avgDailyIncomeInUSD * timeInDays;
   } else if (periodType === 'months') {
     timeInDays = timeToElapse * 30;
-    totalDollars = Math.floor(infections * 0.65) * avgDailyIncomeInUSD * timeInDays;
+    totalDollars = Math.trunc(infections * 0.65) * avgDailyIncomeInUSD * timeInDays;
   } else {
     timeInDays = timeToElapse;
-    totalDollars = Math.floor(infections * 0.65) * avgDailyIncomeInUSD * timeInDays;
+    totalDollars = Math.trunc(infections * 0.65) * avgDailyIncomeInUSD * timeInDays;
   }
-  return Math.floor(totalDollars);
+  return totalDollars;
 };
