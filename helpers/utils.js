@@ -1,5 +1,3 @@
-/* eslint-disable import/prefer-default-export */
-
 exports.infectionsByRequestedTime = (data, infected) => {
   let infections = null;
   const {
@@ -12,11 +10,11 @@ exports.infectionsByRequestedTime = (data, infected) => {
   let factor;
 
   if (periodType === 'days') {
-    factor = Math.trunc(period / 3);
+    factor = Math.floor(period / 3);
     infections = infected * (2 ** factor);
   } else if (periodType === 'weeks') {
     days = period * 7;
-    factor = Math.trunc(days / 3);
+    factor = Math.floor(days / 3);
     infections = infected * (2 ** factor);
   } else if (periodType === 'months') {
     days = period * 30;
@@ -28,13 +26,13 @@ exports.infectionsByRequestedTime = (data, infected) => {
 
 exports.severeCasesByRequestedTime = (time) => Math.trunc(time * 0.15);
 
-exports.casesForICUByRequestedTime = (time) => Math.trunc(time * 0.05);
+exports.casesForICUByRequestedTime = (time) => time * 0.05;
 
-exports.casesForVentilatorsByRequestedTime = (time) => Math.trunc(time * 0.02);
+exports.casesForVentilatorsByRequestedTime = (time) => time * 0.02;
 
 exports.hospitalBedsByRequestedTime = (data, cases) => {
-  const bedsAvailable = Math.trunc(data.totalHospitalBeds * 0.35);
-  return bedsAvailable - cases;
+  const bedsAvailable = data.totalHospitalBeds * 0.35;
+  return Math.trunc(bedsAvailable - cases);
 };
 
 exports.dollarsInFlight = (data, infections) => {
