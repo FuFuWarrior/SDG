@@ -6,14 +6,14 @@ const morgan = require('morgan');
 
 const estimate = require('./src/estimator');
 
-const pool = require('./models/database');
+// const pool = require('./models/database');
 
 const app = express();
 
-let logger;
+// let logger;
 
 app.use(express.json());
-app.use( morgan(':method     :url    is done in :response-time ms'))
+app.use(morgan(':method     :url    is done in :response-time ms'));
 
 
 app.post('/api/v1/on-covid-19', async (req, res) => {
@@ -36,8 +36,8 @@ app.post('/api/v1/on-covid-19/xml', async (req, res) => {
   res.send(xml).status(201);
 });
 
-app.get('', async (req, res) => {
-  pool.query('INSERT Into ')
-})
+// app.get('', async (req, res) => {
+//   pool.query('INSERT Into ');
+// });
 
 module.exports = app;
