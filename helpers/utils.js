@@ -18,17 +18,17 @@ exports.infectionsByRequestedTime = (data, infected) => {
     infections = infected * (2 ** factor);
   } else if (periodType === 'months') {
     days = period * 30;
-    factor = Math.trunc(days / 3);
+    factor = Math.floor(days / 3);
     infections = infected * (2 ** factor);
   }
   return infections;
 };
 
-exports.severeCasesByRequestedTime = (time) => Math.trunc(time * (15 / 100));
+exports.severeCasesByRequestedTime = (time) => Math.trunc(time * 0.15);
 
-exports.casesForICUByRequestedTime = (time) => Math.trunc(time * (5 / 100));
+exports.casesForICUByRequestedTime = (time) => time * 0.05;
 
-exports.casesForVentilatorsByRequestedTime = (time) => Math.trunc(time * (2 / 100));
+exports.casesForVentilatorsByRequestedTime = (time) => time * 0.02;
 
 exports.hospitalBedsByRequestedTime = (data, cases) => {
   const bedsAvailable = data.totalHospitalBeds * 0.35;
@@ -57,5 +57,5 @@ exports.dollarsInFlight = (data, infections) => {
     timeInDays = timeToElapse;
     totalDollars = infections * avgDailyIncomePopulation * avgDailyIncomeInUSD * timeInDays;
   }
-  return Math.floor(totalDollars);
+  return totalDollars;
 };
