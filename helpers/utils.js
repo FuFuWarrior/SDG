@@ -26,9 +26,9 @@ exports.infectionsByRequestedTime = (data, infected) => {
 
 exports.severeCasesByRequestedTime = (time) => Math.trunc(time * 0.15);
 
-exports.casesForICUByRequestedTime = (time) => time * 0.05;
+exports.casesForICUByRequestedTime = (time) => Math.trunc(time * 0.05);
 
-exports.casesForVentilatorsByRequestedTime = (time) => time * 0.02;
+exports.casesForVentilatorsByRequestedTime = (time) => Math.trunc(time * 0.02);
 
 exports.hospitalBedsByRequestedTime = (data, cases) => {
   const bedsAvailable = data.totalHospitalBeds * 0.35;
