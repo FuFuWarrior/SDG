@@ -13,31 +13,31 @@ const { casesForICUByRequestedTime } = require('../helpers/utils');
 const { casesForVentilatorsByRequestedTime } = require('../helpers/utils');
 const { dollarsInFlight } = require('../helpers/utils');
 
-const input = {
-  region: {
-    name: 'Africa',
-    avgAge: 19.7,
-    avgDailyIncomeInUSD: 5,
-    avgDailyIncomePopulation: 0.71
-  },
-  periodType: 'days',
-  timeToElapse: 58,
-  reportedCases: 674,
-  population: 66622705,
-  totalHospitalBeds: 1380614
-};
+// const input = {
+//   region: {
+//     name: 'Africa',
+//     avgAge: 19.7,
+//     avgDailyIncomeInUSD: 5,
+//     avgDailyIncomePopulation: 0.71
+//   },
+//   periodType: 'days',
+//   timeToElapse: 58,
+//   reportedCases: 674,
+//   population: 66622705,
+//   totalHospitalBeds: 1380614
+// };
 
 const covid19ImpactEstimator = (data) => {
   const impact = {};
   const severeImpact = {};
-  let {
+  const {
     reportedCases
   } = data;
 
-  reportedCases = reportedCases;
+  const reportedCase = reportedCases;
 
-  impact.currentlyInfected = reportedCases * 10;
-  severeImpact.currentlyInfected = reportedCases * 50;
+  impact.currentlyInfected = reportedCase * 10;
+  severeImpact.currentlyInfected = reportedCase * 50;
 
   const impactCurrentlyInfected = impact.currentlyInfected;
   impact.infectionsByRequestedTime = infectionsByRequestedTime(
