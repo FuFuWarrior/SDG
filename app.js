@@ -4,16 +4,19 @@ const express = require('express');
 
 const morgan = require('morgan');
 
+const fs = require('fs');
+
 const estimate = require('./src/estimator');
+
+// const winston = require('./middleware/winston');
+
+const ev = require('./middleware/eventListener');
 
 // const pool = require('./models/database');
 
 const app = express();
 
-// let logger;
-
-app.use(express.json());
-app.use(morgan(':method     :url    is done in :response-time ms'));
+app.use(morgan(':method   :url    :status   is done in    :response-time ms', { stream: ev }));
 
 
 app.post('/api/v1/on-covid-19', async (req, res) => {
@@ -36,8 +39,9 @@ app.post('/api/v1/on-covid-19/xml', async (req, res) => {
   res.send(xml).status(201);
 });
 
-// app.get('', async (req, res) => {
-//   pool.query('INSERT Into ');
-// });
+app.get('/api/v1/on-covid-19/logs', async (req, res) => {
+  const logs = fs.readFileSync('./logs/app.log');
+  res.send(logs).status(200);
+});
 
 module.exports = app;
