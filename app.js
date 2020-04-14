@@ -27,21 +27,22 @@ app.use(morgan(':method   :url    :status   is done in    :response-time ms', { 
 app.post('/api/v1/on-covid-19', (req, res) => {
   const data = req.body;
   const result = estimate(data);
-  res.send(result).status(201);
+  res.status(201).send(result);
 });
 
 app.post('/api/v1/on-covid-19/json', (req, res) => {
   const data = req.body;
   const result = estimate(data);
-  res.send(result).status(201);
+  res.status(201).send(result);
 });
 
 
 app.post('/api/v1/on-covid-19/xml', (req, res) => {
   const data = req.body;
-  const builder = new xml2js.Builder({ renderOpts: { pretty: true, indent: '    ', newline: '\n' } });
+  const builder = new xml2js.Builder();
   const xml = builder.buildObject(estimate(data));
-  res.send(xml).status(201);
+  res.header('Content-Type', 'application/xml; charset=UTF-8')
+  return res.status(201).send(xml);
 });
 
 app.get('/api/v1/on-covid-19/logs', (req, res) => {

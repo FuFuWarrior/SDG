@@ -22,7 +22,7 @@ const fs = require('fs');
 const stream = {
   // eslint-disable-next-line no-unused-vars
   write(message) {
-    fs.appendFileSync('./sorry/logs.txt', nn);
+    fs.appendFileSync('./sorry/logs.txt', message);
   }
 };
 
