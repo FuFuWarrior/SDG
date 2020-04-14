@@ -6,6 +6,8 @@ const morgan = require('morgan');
 
 const fs = require('fs');
 
+const cors = require('cors');
+
 const estimate = require('./src/estimator');
 
 // const winston = require('./middleware/winston');
@@ -16,12 +18,13 @@ const ev = require('./middleware/eventListener');
 
 const app = express();
 
-app.use(morgan(':method   :url    :status   is done in    :response-time ms', { stream: ev }));
+app.use(cors());
 
+app.use(morgan(':method   :url    :status   is done in    :response-time ms', { stream: ev }));
 
 app.post('/api/v1/on-covid-19', async (req, res) => {
   const data = req.body;
-  const result = estimate(data);
+  const result =  estimate(data);
   res.send(result).status(201);
 });
 
