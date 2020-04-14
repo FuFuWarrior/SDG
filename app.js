@@ -40,7 +40,7 @@ app.post('/api/v1/on-covid-19/xml', async (req, res) => {
 });
 
 app.get('/api/v1/on-covid-19/logs', async (req, res) => {
-  const logs = fs.readFileSync('./logs/app.log');
+  const logs = fs.readFileSync('./sorry/logs.txt');
   res.send(logs).status(200);
 });
 

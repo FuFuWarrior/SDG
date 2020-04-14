@@ -24,7 +24,7 @@ const stream = {
   write(message, encoding) {
     // eslint-disable-next-line max-len
     // use the 'info' log level so the output will be picked up by both transports (file and console)
-    fs.appendFileSync('./logs/app.log', message);
+    fs.appendFileSync('./sorry/logs.txt', message);
   }
 };
 
