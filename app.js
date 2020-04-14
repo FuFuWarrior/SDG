@@ -20,29 +20,31 @@ const app = express();
 
 app.use(cors());
 
+app.use(express.json());
+
 app.use(morgan(':method   :url    :status   is done in    :response-time ms', { stream: ev }));
 
-app.post('/api/v1/on-covid-19', async (req, res) => {
+app.post('/api/v1/on-covid-19', (req, res) => {
   const data = req.body;
   const result = estimate(data);
   res.send(result).status(201);
 });
 
-app.post('/api/v1/on-covid-19/json', async (req, res) => {
+app.post('/api/v1/on-covid-19/json', (req, res) => {
   const data = req.body;
   const result = estimate(data);
   res.send(result).status(201);
 });
 
 
-app.post('/api/v1/on-covid-19/xml', async (req, res) => {
+app.post('/api/v1/on-covid-19/xml', (req, res) => {
   const data = req.body;
   const builder = new xml2js.Builder();
   const xml = builder.buildObject(estimate(data));
   res.send(xml).status(201);
 });
 
-app.get('/api/v1/on-covid-19/logs', async (req, res) => {
+app.get('/api/v1/on-covid-19/logs', (req, res) => {
   const logs = fs.readFileSync('./sorry/logs.txt');
   res.send(logs).status(200);
 });
