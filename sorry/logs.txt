@@ -1,4 +1,0 @@
-
-POST   /api/v1/on-covid-19/xml    500   is done in    192 ms
-POST   /api/v1/on-covid-19    500   is done in    19 ms
-POST   /api/v1/on-covid-19    201   is done in    104 ms
