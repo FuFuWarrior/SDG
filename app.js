@@ -54,7 +54,8 @@ app.post('/api/v1/on-covid-19/xml', (req, res) => {
 
 app.get('/api/v1/on-covid-19/logs', (req, res, next) => {
   const logs = fs.readFileSync('./logs.txt');
+  res.header('Content-Type', 'text/plain; charset=UTF-8');
   logger(req,res);
-  res.send(logs).status(200);
+  return res.send(logs).status(200);
 });
 module.exports = app;
