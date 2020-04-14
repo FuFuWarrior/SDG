@@ -24,7 +24,7 @@ app.use(morgan(':method   :url    :status   is done in    :response-time ms', { 
 
 app.post('/api/v1/on-covid-19', async (req, res) => {
   const data = req.body;
-  const result =  estimate(data);
+  const result = estimate(data);
   res.send(result).status(201);
 });
 
