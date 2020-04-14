@@ -1,5 +1,8 @@
-const fs = require('fs');
+// const fs = require('fs');
+const path = require('path');
 
+const timeInMilliseconds = require('../helpers/utils');
+const saveToFile = require('../helpers/utils');
 // function saveRequestDataToDatabase() {
 
 // };
@@ -19,11 +22,32 @@ const fs = require('fs');
 //   });
 // };
 
-const stream = {
-  // eslint-disable-next-line no-unused-vars
-  write(message) {
-    fs.appendFileSync('./sorry/logs.txt', message);
-  }
+
+const requestLogger = (req, res, next) => {
+  const {
+    method,
+    url
+  } = req;
+  const {
+    statusCode
+  } = res;
+  const startTime = process.hrtime();
+  const timeInMS = timeInMilliseconds.timeInMilliseconds(startTime).toLocaleString();
+  const message = `${method}\t\t${url}\t\t${statusCode}\t\t${Math.floor(timeInMS)
+    .toString()
+    .padStart(2, '00')}ms`;
+  const filePath = path.join(__dirname, '../logs.txt');
+
+  saveToFile.saveToFile(message, filePath);
+  // next();
 };
 
-module.exports = stream;
+module.exports = requestLogger;
+
+// const stream = {
+//   // eslint-disable-next-line no-unused-vars
+//   write(message) {
+//     fs.appendFileSync('./sorry/logs.txt', message);
+//   }
+// };
+
