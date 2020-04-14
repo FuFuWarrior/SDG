@@ -1,0 +1,12 @@
+POST   /api/v1/on-covid-19/xml    201   is done in    76 ms
+POST   /api/v1/on-covid-19/xml    201   is done in    60 ms
+POST   /api/v1/on-covid-19/xml    201   is done in    4 ms
+POST   /api/v1/on-covid-19/xml    201   is done in    29 ms
+POST   /api/v1/on-covid-19/xml    201   is done in    44 ms
+POST   /api/v1/on-covid-19/xml    201   is done in    35 ms
+POST   /api/v1/on-covid-19/xml    201   is done in    42 ms
+POST   /api/v1/on-covid-19/xml    201   is done in    31 ms
+POST   /api/v1/on-covid-19/xml    201   is done in    39 ms
+POST   /api/v1/on-covid-19/xml    201   is done in    37 ms
+POST   /api/v1/on-covid-19/xml    201   is done in    186 ms
+POST   /api/v1/on-covid-19/xml    201   is done in    40 ms
